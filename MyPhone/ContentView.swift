@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  MyPhone
+//  PocketSpark
 //
 //  Created by Emre Yurtseven on 13.06.26.
 //

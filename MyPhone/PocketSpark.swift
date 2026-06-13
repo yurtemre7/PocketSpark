@@ -1,6 +1,6 @@
 //
-//  MyPhoneApp.swift
-//  MyPhone
+//  PocketSpark.swift
+//  PocketSpark
 //
 //  Created by Emre Yurtseven on 13.06.26.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MyPhoneApp: App {
+struct PocketSpark: App {
     @StateObject private var batteryService = BatteryService()
 
     var body: some Scene {

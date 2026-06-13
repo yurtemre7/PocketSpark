@@ -1,6 +1,6 @@
 //
 //  BatteryService.swift
-//  MyPhone
+//  PocketSpark
 //
 //  Created by Emre Yurtseven on 13.06.26.
 //
@@ -50,7 +50,7 @@ final class BatteryService: ObservableObject {
     @Published var deviceName: String = "No Device"
     @Published var errorMessage: String?
     @Published var availableDevices: [IOSDevice] = []
-    @Published var menuBarTitle: String = "MyPhone"
+    @Published var menuBarTitle: String = "PocketSpark"
 
     @Published var selectedDeviceUDID: String {
         didSet {
@@ -103,7 +103,7 @@ final class BatteryService: ObservableObject {
                 await MainActor.run {
                     self.availableDevices = []
                     self.errorMessage = "Required binaries not found in /opt/homebrew/bin"
-                    self.menuBarTitle = "MyPhone"
+                    self.menuBarTitle = "PocketSpark"
                 }
                 return
             }
@@ -135,7 +135,7 @@ final class BatteryService: ObservableObject {
                 if devices.isEmpty {
                     self.selectedDeviceUDID = ""
                     self.deviceName = "No Device"
-                    self.menuBarTitle = "MyPhone"
+                    self.menuBarTitle = "PocketSpark"
                     return
                 }
 
@@ -157,7 +157,7 @@ final class BatteryService: ObservableObject {
                     self.chargingStatus = "Disconnected"
                     self.lastUpdated = Date.now.formatted(date: .omitted, time: .standard)
                     self.errorMessage = "ideviceinfo not found at \(Self.ideviceInfoPath)"
-                    self.menuBarTitle = "MyPhone"
+                    self.menuBarTitle = "PocketSpark"
                 }
                 return
             }
@@ -171,7 +171,7 @@ final class BatteryService: ObservableObject {
                     self.chargingStatus = "Disconnected"
                     self.lastUpdated = Date.now.formatted(date: .omitted, time: .standard)
                     self.errorMessage = "No iPhone selected."
-                    self.menuBarTitle = "MyPhone"
+                    self.menuBarTitle = "PocketSpark"
                 }
                 return
             }
