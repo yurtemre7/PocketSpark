@@ -29,3 +29,8 @@ ideviceinfo -n -q com.apple.mobile.battery -k BatteryIsCharging
 
 
 Feel free to open issues and I hope you like this app!
+
+
+#### Installation
+
+For now you may build this app via XCode yourself. A dedicated .app file will be distributed soon!
