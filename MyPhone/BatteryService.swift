@@ -11,7 +11,7 @@ import Combine
 
 enum ConnectionType: String, Codable, Hashable, Sendable {
     case usb = "USB"
-    case network = "Wi‑Fi"
+    case network = "Wi-Fi"
 }
 
 struct IOSDevice: Identifiable, Hashable, Sendable {
