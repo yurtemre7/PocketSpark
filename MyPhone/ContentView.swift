@@ -1,80 +1,47 @@
-//
-//  ContentView.swift
-//  MyPhone
-//
-//  Created by Emre Yurtseven on 13.06.26.
-//
-
 import SwiftUI
-import SwiftData
+import AppKit
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @StateObject private var batteryService = BatteryService()
 
     var body: some View {
-        NavigationViewWrapper {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        }
-    }
+        VStack(alignment: .leading, spacing: 12) {
+            Text(batteryService.deviceName)
+                .font(.headline)
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+            Text("Battery: \(batteryService.batteryPercentage)")
+            Text("Status: \(batteryService.chargingStatus)")
+            if let binaryPath = batteryService.binaryPath {
+                Text("Binary: \(binaryPath)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .textSelection(.enabled)
+            }
+            Text("Last updated: \(batteryService.lastUpdated)")
+                .foregroundStyle(.secondary)
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            if let error = batteryService.errorMessage, !error.isEmpty {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+            }
+
+            Divider()
+
+            Button("Refresh") {
+                batteryService.refresh()
+            }
+
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
             }
         }
-    }
-}
-
-fileprivate struct NavigationViewWrapper<Content: View>: View {
-    let content: () -> Content
-
-    var body: some View {
-#if os(macOS)
-        NavigationSplitView {
-            content()
-        } detail: {
-            Text("Select an item")
+        .padding()
+        .onAppear {
+            batteryService.startAutoRefresh(interval: 60)
         }
-#else
-        content()
-#endif
+        .onDisappear {
+            batteryService.stopAutoRefresh()
+        }
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
