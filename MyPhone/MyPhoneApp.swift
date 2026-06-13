@@ -1,11 +1,20 @@
+//
+//  MyPhoneApp.swift
+//  MyPhone
+//
+//  Created by Emre Yurtseven on 13.06.26.
+//
+
 import SwiftUI
 
 @main
 struct MyPhoneApp: App {
+    @StateObject private var batteryService = BatteryService()
+
     var body: some Scene {
-        MenuBarExtra("MyPhone", systemImage: "iphone") {
+        MenuBarExtra(batteryService.menuBarTitle, systemImage: "iphone") {
             ContentView()
-                .frame(width: 280)
+                .environmentObject(batteryService)
         }
         .menuBarExtraStyle(.window)
     }

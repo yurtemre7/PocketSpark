@@ -10,9 +10,22 @@
 		6BF472DB2FDD545B008A3C1F /* MyPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6BBD44D02FDD652D007F00D1 /* Exceptions for "MyPhone" folder in "MyPhone" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6BF472DA2FDD545B008A3C1F /* MyPhone */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6BF472DD2FDD545B008A3C1F /* MyPhone */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6BBD44D02FDD652D007F00D1 /* Exceptions for "MyPhone" folder in "MyPhone" target */,
+			);
 			path = MyPhone;
 			sourceTree = "<group>";
 		};
@@ -253,7 +266,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyPhone/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "MyPhone needs access to your local network to wirelessly read battery and device information from your iPhone or iPad over Wi‑Fi.\n";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -297,7 +312,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyPhone/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "MyPhone needs access to your local network to wirelessly read battery and device information from your iPhone or iPad over Wi‑Fi.\n";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
